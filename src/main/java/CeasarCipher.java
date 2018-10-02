@@ -1,6 +1,7 @@
 public class CeasarCipher {
 
-public CeasarCipher(String subText , int shift) {
+public String ceasarCipher(String subText , int shift) {
+
     if (shift > 26){
         shift = shift%26;
     } else if (shift<0){
@@ -13,24 +14,26 @@ public CeasarCipher(String subText , int shift) {
         if (Character.isLetter(ch)){
             if (Character.isLowerCase(ch)){
                 char c = (char)(ch+shift);
-                if (c> 'Z'){
-                    cipherText += (char)(ch - (26-shift));
+                if (c > 'Z'){
+                return     cipherText + (char)(ch - (26-shift));
                 } else {
-                    cipherText += c;
+                 return    cipherText + c;
                 }
             } else if (Character.isUpperCase(ch)){
                 char c = (char)(ch+shift);
-                if (c>'z'){
-                    cipherText += (char)(ch - (26-shift));
+                if (c >'Z'){
+                  return   cipherText + (char)(ch - (26-shift));
                 } else {
-                    cipherText += c;
+                  return   cipherText + ch;
                 }
             }
         } else {
-            cipherText += ch;
+         return    cipherText + ch;
         }
-    }
 
+    }
+    System.out.println(cipherText);
+    return cipherText;
 }
 }
 
