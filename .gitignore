@@ -25,3 +25,10 @@
 hs_err_pid*
 
 .idea
+.gradle
+build
+out
+gradle
+ceasar-cipher.iml
+gradlew
+settings.gradle
