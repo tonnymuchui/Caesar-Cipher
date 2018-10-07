@@ -2,13 +2,37 @@ import java.util.Scanner;
 
 public class App {
 
-    public static void main(String[] args) {
-        Scanner myCipher = new Scanner(System.in);
-        CeasarCipher classCipher = new CeasarCipher();
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Write something!");
+        System.out.println("Welcome to Code Cipher!");
+        System.out.println("choice\n 1.Encrypt\n 2.Decrypt");
+        int choice=sc.nextInt();
+        CeasarCipher caeser=new CeasarCipher();
+        if(choice ==1){
+            System.out.println("Enter the String for Encryption: ");
+            String message = new String();
+            message = sc.next();
+            System.out.println("Enter Key");
+            int shiftKey=sc.nextInt();
+            System.out.println(caeser.encrypt(message,shiftKey));
 
-        String mycaesar = myCipher.nextLine();
-        System.out.println(classCipher.ceasarCipher(mycaesar, 4));
+        }
+        else if(choice==2){
+            System.out.println("Enter the String for Decryption: ");
+            String message = new String();
+            message = sc.next();
+            System.out.println("Enter Key");
+            int shiftKey=sc.nextInt();
+            System.out.println(caeser.decrypt(message, 3));
+
+        }
+        else {
+            System.out.println("Invalid choice");
+        }
+
+
     }
+
 }

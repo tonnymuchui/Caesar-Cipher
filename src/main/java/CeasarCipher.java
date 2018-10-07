@@ -1,39 +1,40 @@
+
+
 public class CeasarCipher {
 
-public String ceasarCipher(String subText , int shift) {
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
-    if (shift > 26){
-        shift = shift%26;
-    } else if (shift<0){
-        shift = (shift % 26)+ 26;
-    }
-    String cipherText= "";
-    int length = subText.length();
-    for (int i = 0; i<length; i++){
-        char ch = subText.charAt(i);
-        if (Character.isLetter(ch)){
-            if (Character.isLowerCase(ch)){
-                char c = (char)(ch+shift);
-                if (c > 'Z'){
-                return     cipherText + (char)(ch - (26-shift));
-                } else {
-                 return    cipherText + c;
-                }
-            } else if (Character.isUpperCase(ch)){
-                char c = (char)(ch+shift);
-                if (c >'Z'){
-                  return   cipherText + (char)(ch - (26-shift));
-                } else {
-                  return   cipherText + ch;
-                }
-            }
-        } else {
-         return    cipherText + ch;
+    public static String encrypt(String plainText, int shiftKey) {
+        plainText = plainText.toLowerCase();
+        String cipherText = "";
+        for (int i = 0; i < plainText.length(); i++) {
+            int charPosition = ALPHABET.indexOf(plainText.charAt(i));
+            int keyVal = (shiftKey + charPosition) % 26;
+            char replaceVal = ALPHABET.charAt(keyVal);
+            cipherText += replaceVal;
         }
+        return cipherText;
 
     }
-    System.out.println(cipherText);
-    return cipherText;
+    public static String decrypt(String cipherText, int shiftKey)
+    {
+        cipherText = cipherText.toLowerCase();
+        String plainText = "";
+        for (int i = 0; i < cipherText.length(); i++)
+        {
+            int charPosition = ALPHABET.indexOf(cipherText.charAt(i));
+            int keyVal = (charPosition - shiftKey) % 26;
+            if (keyVal < 0)
+            {
+                keyVal = ALPHABET.length() + keyVal;
+            }
+            char replaceVal = ALPHABET.charAt(keyVal);
+            plainText += replaceVal;
+        }
+        return plainText;
+    }
+
 }
+
 }
 
