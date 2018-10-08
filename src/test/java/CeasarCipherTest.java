@@ -1,25 +1,14 @@
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertEquals;
-
-public class CeasarCipherTest{
-
+public class CeasarCipher {
 
     @Test
-    public void Cipher_testingEncryptingmethod() {
-        CeasarCipher cipher =new CeasarCipher();
-        assertEquals("nbe",cipher.encrypt("mad",1));
+    public void encrypt() {
+        CeasarCipher obj = new CeasarCipher();
+        obj.encrypt("boy",1);
+        assertEquals("cpz","boy");
     }
-
-    @Test
-    public void Cipher_testingDecryptingMethod() {
-        CeasarCipher cipher =new CeasarCipher();
-        assertEquals("mad",cipher.decrypt("nbe",1));
-    }
-
-
-}
-
-
 }
